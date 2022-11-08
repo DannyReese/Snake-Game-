@@ -100,6 +100,7 @@ let removeSnake = ()=>{ for(let i = 0 ; i < cells.length; i++){
 
 function gameOver(){
     score = 0
+    snake = []
     removeSnake()
     cells[appleIndex].classList.remove('apple')
     youDied.classList.remove('dies-pop-up-off')
@@ -131,7 +132,19 @@ document.addEventListener('keypress',(event)=>{
 });
 
 
-startButton.addEventListener('click',startGame)
+let startButtonFunc= ()=>{
+    if(snake.length > 0){
+        return;
+    }else{
+        startGame()
+    }
+}
+
+
+
+startButton.addEventListener('click',startButtonFunc)
+
+
 tryAgain.addEventListener('click',closePopUp)
 
 controlButton.addEventListener("click",()=>{
