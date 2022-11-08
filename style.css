@@ -1,0 +1,329 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #9766ae;
+ display: flex;
+ justify-content: center;
+    color:white;
+   overflow-y: scroll;
+}
+
+body{ 
+    background-color:rgb(239, 245, 214);
+    border-style: solid;
+    border-color: black;
+    border-width: .5em;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+  }
+  #snake-pic{
+    margin-top: 2em;
+    height: 150px;
+  }
+#headerBox{
+    height: 90px;
+    width: 400px;
+    background-color: #9766ae;
+    border-radius: 7px;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    border-bottom: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset  -1px -8px   rgb(120, 34, 102);  
+
+}
+#headerWindow{
+    width:80%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(22, 19, 19);
+}
+header{
+    font-family: 'Faster One', cursive;
+    font-size: 2em;
+    color: rgb(224, 243, 129);
+}
+
+#score-box{
+    width: 300px;
+    height: 40px;
+    background-color: #9766ae;
+    border-radius: 7px;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    border-bottom: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset  -1px -8px   rgb(120, 34, 102);  
+}
+
+#scoreWindow{
+    width:80%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(22, 19, 19);
+}
+
+#scoreText{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(224, 243, 129);
+}
+
+#outer-grid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #9766ae;
+    border-radius: 10px;
+    width: 500px;
+    height: 500px;
+    border-style: groove;
+    border-color: black;
+    border-width: 2px;
+    margin-bottom: 2em;
+    box-shadow: inset  -1px -8px   rgb(120, 34, 102);  
+}
+
+#gap-between{
+    width: 415px;
+    height: 415px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(229, 239, 175);
+    border-style: solid;
+    border-color: rgb(11, 11, 11);
+    border-radius: 4px;
+}
+
+#gap-between2{
+    width: 405px;
+    height: 405px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+#grid{
+    background-color: rgb(228, 156, 228);
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cell{
+    width: 20px;
+    height: 20px;
+    border-color: rgb(217, 75, 217);
+    border-style: solid;
+    border-width: .5px;
+}
+
+
+.apple{
+    background-color: red;
+    border-style: solid;
+    border-color: black;
+    box-shadow: inset  -1px -4px   rgb(118, 8, 8);  
+    border-radius: 20px;
+}
+
+.poison{
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-color: black;
+    box-shadow: inset  -1px -9px   rgb(22, 2, 2);  
+    border-radius: 20px;
+}
+
+
+.snake{
+    background-color:rgb(184, 222, 101) ;
+    box-shadow: inset  -3px -4px   rgb(23, 73, 10);  
+    border-style: solid;
+    border-color: bisque;
+}
+
+#buttons{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 3em;
+    height: 5em;
+}
+
+#start{
+    background-color: #9766ae;
+    color: rgb(224, 243, 129);
+    font-size: large;
+    border-radius: 5px;
+    box-shadow: inset  -1px -3px   rgb(120, 34, 102);  
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    width: 30%;
+
+}   
+
+#control{
+    background-color: #9766ae;
+    color: rgb(224, 243, 129);
+    font-size: larger;
+    border-radius: 5px;
+    box-shadow: inset  -1px -3px   rgb(120, 34, 102);  
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    width: 30%;
+}
+ .controls-pop-up-off{
+    background-color: rgba(0,0,0,0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+   
+ }
+
+ .controls-pop-up-on{
+    background-color: rgba(0,0,0,0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+   
+ }
+
+
+ .controls-actual-pop-up{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 40%;
+    height: 52%;
+    background-color: antiquewhite;
+    border-style: solid;
+    border-color: black;
+    border-radius: 8px;
+    
+
+ }
+
+ .controls-header{
+    margin: 0;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background-color: #9766ae;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: antiquewhite;
+    padding-top: .5em;
+    padding-bottom:.5em ;
+    border-style:  solid;
+    border-color: black;
+    border-width: 0px 0px 1px 0px;
+
+ }
+ 
+ .controls{
+    color: black;
+ }
+ 
+ li{
+    margin-bottom: 1em;
+ }
+
+ .button-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    margin-bottom: 0;
+
+ }
+
+ #close-pop-up{
+    background-color: #9766ae;
+    color: antiquewhite;
+    font-size: larger;
+    border-radius: 5px;
+    box-shadow: inset  -1px -3px   rgb(120, 34, 102);  
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    width: 40%;
+    height: 40%;
+ }
+
+ .dies-pop-up{
+    background-color: rgba(1,1,2,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dies-pop-up-off{
+ background-color: rgba(0,0,0,0.3);
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100vw;
+ height: 100vh;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ display: none;
+}
+
+
+
+h1{
+    color:greenyellow;
+}
+#solid-snake{
+    height: 50%;
+}
+
+#close-dies-pop-up-button{
+    color:greenyellow;
+    background-color: rgba(0,0,0,0);
+    border-style: solid;
+    border-color: chartreuse;
+    border-radius: 8px;
+    border-width: 1px;
+    width: 20%;
+    height: 5%;
+}
