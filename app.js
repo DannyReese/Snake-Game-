@@ -34,6 +34,19 @@ function applePlacer(cells){
         }
  };
 
+//  function highScore(score){
+//     let currentScore = score 
+//     let highscore = currentScore
+//     if (currentScore > highscore){
+//         highscore = currentScore
+//         return highscore
+       
+//     }else{
+//         return highscore
+//     }
+    
+//     }
+                                              
 function eatApple(cells,tail){
         if(cells[snake[0]].classList.contains('apple')){
             cells[snake[0]].classList.remove('apple');
@@ -75,9 +88,16 @@ let deadOrAlive = ()=>{
     return result;
 };
 
-let addSnake = ()=>{ for(let i = 0 ; i < cells.length; i++){
-                        if(cells[snake[i]]){
-                            cells[i].classList.add('snake')
+// let addSnake = ()=>{ for(let i = 0 ; i < cells.length; i++){
+//                         if(cells[snake[i]]){
+//                             cells[i].classList.add('snake')
+//                         }
+//                     }
+// };
+
+let addSnake = ()=>{for (let snakes of snake){
+                         if(cells[snakes]){
+                            cells[snakes].classList.add('snake')
                         }
                     }
 };
@@ -99,9 +119,10 @@ let removeSnake = ()=>{ for(let i = 0 ; i < cells.length; i++){
 };
 
 function gameOver(){
-    score = 0
-    snake = []
-    removeSnake()
+    
+    score = 0;
+    snake = [];
+    removeSnake();
     cells[appleIndex].classList.remove('apple')
     youDied.classList.remove('dies-pop-up-off')
     youDied.classList.add('dies-pop-up')
@@ -126,20 +147,21 @@ document.addEventListener('keypress',(event)=>{
         direction = + width;
     }else if(event.key === 'p'){
         clearInterval(interval);
+        console.log(interval)
     }else if(event.key === 'r'){
-        interval = setInterval(deadOrAlive,intervalTime)
+       interval = setInterval(deadOrAlive,intervalTime)
+     
+        
     }
 });
-
 
 let startButtonFunc= ()=>{
     if(snake.length > 0){
         return;
     }else{
-        startGame()
+        startGame();
     }
-}
-
+};
 
 
 startButton.addEventListener('click',startButtonFunc)
