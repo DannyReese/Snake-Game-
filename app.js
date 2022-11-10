@@ -8,7 +8,6 @@ let controlPopup = document.getElementById('popup-container');
 let closeControls = document.getElementById('close-pop-up');
 let youDied = document.getElementById('dies');
 let tryAgain = document.getElementById("close-dies-pop-up-button")
-let currentInterval;
 let snake=[]; 
 let direction = 1;
 let interval = 0;
@@ -17,7 +16,6 @@ let width = 20;
 let speed = .8;
 let score = 0;
 let currentScore 
-
 
 function setBored(){
     scoreText.innerText = "Press Start"
@@ -29,10 +27,10 @@ function setBored(){
 };
 
 function applePlacer(cells){
-        appleIndex = Math.floor(Math.random()* cells.length)
-        cells[appleIndex].classList.add('apple')
+        appleIndex = Math.floor(Math.random()* cells.length);
+        cells[appleIndex].classList.add('apple');
         if(cells[appleIndex].classList.contains('snake')){
-            cells[appleIndex.classList.add('apple')]
+            cells[appleIndex.classList.add('apple')];
         }
  };
   
@@ -70,18 +68,16 @@ function isDead(cells){
         (snake[0] - width <= 0 && direction === -width)||
         cells[snake[0] + direction].classList.contains('snake')
         ){
-        return true
+        return true;
     }else{
-        return false 
+        return false;
     }
 };
-
 
 let deadOrAlive = ()=>{
     let result = (isDead(cells))?gameOver():moveSnake();
     return result;
 };
-
 
 function addSnake(){for (let snakes of snake){
                          if(cells[snakes]){
@@ -95,10 +91,10 @@ function startGame(){
     let cells = document.getElementsByClassName("cell")
     applePlacer(cells);
     scoreText.innerText = score;
-    intervalTime = 600;
+    intervalTime = 800;
     direction = 1;
     snake = [2,1,0];
-    addSnake()
+    addSnake();
     interval = setInterval(deadOrAlive,intervalTime);
 };
 
@@ -132,23 +128,6 @@ function closePopUp(){
     youDied.classList.add('dies-pop-up-off');
 };
 
-document.addEventListener('keypress',(event)=>{
-    if(event.key === 'd' ){
-        direction = 1
-    }else if (event.key === 'w'){
-        direction = - width;
-    }else if (event.key === 'a'){
-        direction = -1;
-    }else if( event.key === 's'){
-        direction = + width;
-    }else if(event.key === 'p'){
-        clearInterval(interval)
-    }else if(event.key === 'r'){
-        clearInterval(interval)
-        interval = setInterval(deadOrAlive, intervalTime);
-    }
-});
-
 function startButtonFunc(){
     if(snake.length > 0){
         return;
@@ -157,14 +136,30 @@ function startButtonFunc(){
     }
 };
 
+document.addEventListener('keypress',(event)=>{
+    if(event.key === 'd' ){
+        direction = 1;
+    }else if (event.key === 'w'){
+        direction = - width;
+    }else if (event.key === 'a'){
+        direction = -1;
+    }else if( event.key === 's'){
+        direction = + width;
+    }else if(event.key === 'p'){
+        clearInterval(interval);
+    }else if(event.key === 'r'){
+        clearInterval(interval);
+        interval = setInterval(deadOrAlive, intervalTime);
+    }
+});
 
-startButton.addEventListener('click',startButtonFunc)
-tryAgain.addEventListener('click',closePopUp)
+startButton.addEventListener('click',startButtonFunc);
+tryAgain.addEventListener('click',closePopUp);
 
 controlButton.addEventListener("click",()=>{
-controlPopup.classList.add('controls-pop-up-on');
+    controlPopup.classList.add('controls-pop-up-on');
 
-closeControls.addEventListener('click',()=>{
+    closeControls.addEventListener('click',()=>{
         controlPopup.classList.remove('controls-pop-up-on');
         controlPopup.classList.add('controls-pop-up-off');
         
@@ -173,6 +168,6 @@ closeControls.addEventListener('click',()=>{
 
 
 
-setBored()
+setBored();
 
  
