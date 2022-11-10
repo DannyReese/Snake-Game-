@@ -144,6 +144,7 @@ document.addEventListener('keypress',(event)=>{
     }else if(event.key === 'p'){
         clearInterval(interval)
     }else if(event.key === 'r'){
+        clearInterval(interval)
         interval = setInterval(deadOrAlive, intervalTime);
     }
 });
