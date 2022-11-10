@@ -56,6 +56,35 @@ header{
     color: rgb(224, 243, 129);
 }
 
+#highScore-box{
+    width: 300px;
+    height: 40px;
+    background-color: #9766ae;
+    border-radius: 7px;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    border-bottom: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset  -1px -8px   rgb(120, 34, 102);  
+}
+
+#highScore-box-window{
+    width:80%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(22, 19, 19);
+}
+
+#highScore-text{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(224, 243, 129);
+} 
+
 #score-box{
     width: 300px;
     height: 40px;

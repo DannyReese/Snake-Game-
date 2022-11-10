@@ -3,6 +3,7 @@ let cells = document.getElementsByClassName("cell");
 let startButton = document.getElementById('start');
 let controlButton = document.getElementById('control');
 let scoreText = document.getElementById('scoreText');
+let highScoreText = document.getElementById('highScore-text')
 let controlPopup = document.getElementById('popup-container');
 let closeControls = document.getElementById('close-pop-up');
 let youDied = document.getElementById('dies');
@@ -13,8 +14,9 @@ let direction = 1;
 let interval = 0;
 let intervalTime = 0;
 let width = 20;
-let speed = 0.8;
-let score = 0
+let speed = .8;
+let score = 0;
+let currentScore 
 
 
 function setBored(){
@@ -33,20 +35,8 @@ function applePlacer(cells){
             cells[appleIndex.classList.add('apple')]
         }
  };
+  
 
-//  function highScore(score){
-//     let currentScore = score 
-//     let highscore = currentScore
-//     if (currentScore > highscore){
-//         highscore = currentScore
-//         return highscore
-       
-//     }else{
-//         return highscore
-//     }
-    
-//     }
-                                              
 function eatApple(cells,tail){
         if(cells[snake[0]].classList.contains('apple')){
             cells[snake[0]].classList.remove('apple');
@@ -59,7 +49,9 @@ function eatApple(cells,tail){
             intervalTime = intervalTime * speed;
             interval = setInterval(deadOrAlive, intervalTime);
         }
+
 };
+
 
 function moveSnake(){
     let tail = snake.pop();
@@ -68,6 +60,7 @@ function moveSnake(){
     eatApple(cells,tail);
     cells[snake[0]].classList.add('snake');
 };
+
 
 function isDead(cells){
     if(
@@ -83,54 +76,57 @@ function isDead(cells){
     }
 };
 
+
 let deadOrAlive = ()=>{
     let result = (isDead(cells))?gameOver():moveSnake();
     return result;
 };
 
-// let addSnake = ()=>{ for(let i = 0 ; i < cells.length; i++){
-//                         if(cells[snake[i]]){
-//                             cells[i].classList.add('snake')
-//                         }
-//                     }
-// };
 
-let addSnake = ()=>{for (let snakes of snake){
+function addSnake(){for (let snakes of snake){
                          if(cells[snakes]){
                             cells[snakes].classList.add('snake')
                         }
                     }
 };
 
+
 function startGame(){
     let cells = document.getElementsByClassName("cell")
     applePlacer(cells);
     scoreText.innerText = score;
-    intervalTime = 1000;
+    intervalTime = 600;
     direction = 1;
     snake = [2,1,0];
     addSnake()
     interval = setInterval(deadOrAlive,intervalTime);
 };
 
-let removeSnake = ()=>{ for(let i = 0 ; i < cells.length; i++){
+
+function removeSnake(){ for(let i = 0 ; i < cells.length; i++){
                             cells[i].classList.remove('snake')
                         }
 };
 
+function checkHighscore(score, currentScore = 0 ){
+    let highscore = (score > currentScore)?score:currentScore;
+    return highscore;
+};
+
 function gameOver(){
-    
+    currentScore = checkHighscore(score,currentScore)
+    highScoreText.innerText = `Best Run: ${currentScore}`
     score = 0;
     snake = [];
     removeSnake();
-    cells[appleIndex].classList.remove('apple')
-    youDied.classList.remove('dies-pop-up-off')
-    youDied.classList.add('dies-pop-up')
-    scoreText.innerText = "Press Start"
-    return clearInterval(interval)
+    cells[appleIndex].classList.remove('apple');
+    youDied.classList.remove('dies-pop-up-off');
+    youDied.classList.add('dies-pop-up');
+    scoreText.innerText = "Press Start";
+    return clearInterval(interval);
 };
 
-let closePopUp = ()=>{
+function closePopUp(){
     let youDied = document.getElementById('dies');
     youDied.classList.remove('dies-pop-up');
     youDied.classList.add('dies-pop-up-off');
@@ -146,16 +142,13 @@ document.addEventListener('keypress',(event)=>{
     }else if( event.key === 's'){
         direction = + width;
     }else if(event.key === 'p'){
-        clearInterval(interval);
-        console.log(interval)
+        clearInterval(interval)
     }else if(event.key === 'r'){
-       interval = setInterval(deadOrAlive,intervalTime)
-     
-        
+        interval = setInterval(deadOrAlive, intervalTime);
     }
 });
 
-let startButtonFunc= ()=>{
+function startButtonFunc(){
     if(snake.length > 0){
         return;
     }else{
@@ -165,8 +158,6 @@ let startButtonFunc= ()=>{
 
 
 startButton.addEventListener('click',startButtonFunc)
-
-
 tryAgain.addEventListener('click',closePopUp)
 
 controlButton.addEventListener("click",()=>{
