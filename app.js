@@ -30,11 +30,10 @@ function applePlacer(cells){
         appleIndex = Math.floor(Math.random()* cells.length);
         cells[appleIndex].classList.add('apple');
         if(cells[appleIndex].classList.contains('snake')){
-            cells[appleIndex.classList.add('apple')];
+            cells[appleIndex].classList.add('apple');
         }
  };
   
-
 function eatApple(cells,tail){
         if(cells[snake[0]].classList.contains('apple')){
             cells[snake[0]].classList.remove('apple');
@@ -50,7 +49,6 @@ function eatApple(cells,tail){
 
 };
 
-
 function moveSnake(){
     let tail = snake.pop();
     cells[tail].classList.remove('snake');
@@ -58,7 +56,6 @@ function moveSnake(){
     eatApple(cells,tail);
     cells[snake[0]].classList.add('snake');
 };
-
 
 function isDead(cells){
     if(
@@ -74,18 +71,14 @@ function isDead(cells){
     }
 };
 
-let deadOrAlive = ()=>{
-    let result = (isDead(cells))?gameOver():moveSnake();
-    return result;
-};
-
+let deadOrAlive = ()=>isDead(cells)?gameOver():moveSnake();
+  
 function addSnake(){for (let snakes of snake){
                          if(cells[snakes]){
                             cells[snakes].classList.add('snake')
                         }
                     }
 };
-
 
 function startGame(){
     let cells = document.getElementsByClassName("cell")
@@ -97,7 +90,6 @@ function startGame(){
     addSnake();
     interval = setInterval(deadOrAlive,intervalTime);
 };
-
 
 function removeSnake(){ for(let i = 0 ; i < cells.length; i++){
                             cells[i].classList.remove('snake')
@@ -128,14 +120,6 @@ function closePopUp(){
     youDied.classList.add('dies-pop-up-off');
 };
 
-function startButtonFunc(){
-    if(snake.length > 0){
-        return;
-    }else{
-        startGame();
-    }
-};
-
 document.addEventListener('keypress',(event)=>{
     if(event.key === 'd' ){
         direction = 1;
@@ -153,7 +137,8 @@ document.addEventListener('keypress',(event)=>{
     }
 });
 
-startButton.addEventListener('click',startButtonFunc);
+startButton.addEventListener('click',()=> snake.length > 0 ||startGame());
+
 tryAgain.addEventListener('click',closePopUp);
 
 controlButton.addEventListener("click",()=>{
@@ -165,8 +150,6 @@ controlButton.addEventListener("click",()=>{
         
     });
 });
-
-
 
 setBored();
 
