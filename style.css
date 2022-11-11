@@ -356,3 +356,43 @@ h1{
     width: 20%;
     height: 5%;
 }
+
+@media screen and (max-width : 500px){
+    #grid{
+        width:300px;
+}
+#outer-grid{
+    height: 400px;
+    width:400px
+}
+#gap-between{
+    width: 315px;
+    height: 315px;
+}
+#gap-between2{
+    width: 305px;
+    height: 305px;
+}
+.cell{
+    width: 15px;
+    height: 15px;
+}
+#score-box{
+    width: 200px;
+    height: 30px;
+}
+
+#highScore-box{
+        width: 200px;
+        height: 30px;
+}
+
+#headerBox{
+    height: 70px;
+    width: 300px;
+}
+header{
+    font-size: 1.5em;
+}
+
+}

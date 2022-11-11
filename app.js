@@ -15,7 +15,7 @@ let intervalTime = 0;
 let width = 20;
 let speed = .8;
 let score = 0;
-let currentScore 
+let currentScore; 
 
 function setBored(){
     scoreText.innerText = "Press Start"
