@@ -91,8 +91,8 @@ function startGame(){
     interval = setInterval(deadOrAlive,intervalTime);
 };
 
-function removeSnake(){ for(let i = 0 ; i < cells.length; i++){
-                            cells[i].classList.remove('snake')
+function removeSnake(){ for(let squares of cells){
+                            squares.classList.remove('snake')
                         }
 };
 
