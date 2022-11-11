@@ -137,7 +137,7 @@ document.addEventListener('keypress',(event)=>{
     }
 });
 
-startButton.addEventListener('click',()=> snake.length > 0 ||startGame());
+startButton.addEventListener('click',()=> snake.length||startGame());
 
 tryAgain.addEventListener('click',closePopUp);
 
